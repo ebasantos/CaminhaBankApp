@@ -1,0 +1,27 @@
+﻿body {
+    max-height: 100%;
+    background-color: #20aaf3;
+    background-size: auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.body-content {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+@media only screen and (min-width: 1200px) {
+    .container {
+        max-width: 100%;
+    }
+}
