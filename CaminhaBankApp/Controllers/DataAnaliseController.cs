@@ -1,8 +1,4 @@
 ﻿using DSS;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace CaminhaBankApp.Controllers
@@ -13,7 +9,7 @@ namespace CaminhaBankApp.Controllers
         public void Index()
         {
             var dataAnaliser = new Clusterizing();
-            dataAnaliser.GetData();
+            dataAnaliser.GetClusterizing();
         }
     }
 }
