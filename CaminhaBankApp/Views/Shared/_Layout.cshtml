@@ -12,9 +12,11 @@
         body {
             padding-top: 0;
         }
+
         a {
             color: white;
         }
+
             a:hover {
                 color: white;
                 text-shadow: 0.5px 0.5px #007bff;
@@ -39,17 +41,14 @@
                     <li>@Html.ActionLink("Solicitar cartão", "create", "Applicants")</li>
                     <li>@Html.ActionLink("Contato", "Contact", "Home")</li>
                 </ul>
-                @Html.Partial("_LoginPartial")
             </div>
+            @Html.Partial("_LoginPartial")
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
 
     </div>
-    @*<footer>
-        <p>&copy; @DateTime.Now.Year</p>
-    </footer>*@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

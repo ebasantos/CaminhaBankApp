@@ -1,0 +1,10 @@
+----- studing nivel
+unknow = 0
+basic = 1
+highschool = 2
+professional 3
+university = 4
+
+----
+yes = 1
+no = 0

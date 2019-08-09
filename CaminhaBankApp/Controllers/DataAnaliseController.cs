@@ -9,7 +9,7 @@ namespace CaminhaBankApp.Controllers
         public void Index()
         {
             var dataAnaliser = new Clusterizing();
-            dataAnaliser.GetClusterizing();
+            dataAnaliser.GetClusterizing("D:/Users/Documentos/Desktop/bank-additional/bank-additional-full.csv");
         }
     }
 }
