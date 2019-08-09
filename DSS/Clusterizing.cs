@@ -1,7 +1,6 @@
-﻿using Microsoft.ML;
-using Microsoft.ML.Data;
+﻿using DSS.datas;
+using Microsoft.ML;
 using Model;
-using System;
 using System.Data;
 using System.IO;
 using Utilities;
@@ -13,25 +12,30 @@ namespace DSS
         public DataTable GetData()
         {
             ///temporaly path, the next step is upload this file to any other only repo...
-            const string path = "./bank-additional-full.csv";
+            const string path = "D:/Users/Documentos/Desktop/bank-additional/bank-additional-full.csv";
             GetClusterizing(path);
             return Commons.ConvertCSVtoDataTable(path);
         }
 
-        public void GetClusterizing(string pathFile= "./bank-additional-full.data")
+        public void GetClusterizing(string pathFile)
         {
-            string _dataPath = Path.Combine(Environment.CurrentDirectory, "Data", "bank-additional-full.data");
-            string _modelPath = Path.Combine(Environment.CurrentDirectory, "Data", "bankClusteringModel.zip");
+            string _dataPath = "D:/Users/Documentos/Desktop/bank-additional/bank-analiser.csv";///?? Path.Combine(Environment.CurrentDirectory, "bank-additional-full.csv");
+            string _modelPath = "D:/Users/Documentos/Desktop/bank-additional/bank-analiser-learning.csv";///?? Path.Combine(Environment.CurrentDirectory, "bank-additional-full.csv");
 
 
-            var context = new MLContext();
-            IDataView dataView = context.Data.LoadFromTextFile<AppliantDataCluster>(_dataPath, hasHeader: true, separatorChar: ';');
+            var context = new MLContext(seed: 0);
+            IDataView dataView = context.Data.LoadFromTextFile<Model.AppliantDataCluster>(_dataPath, separatorChar: ',', hasHeader: true, allowQuoting: true,
+                                                                                    trimWhitespace: true, allowSparse: true);
 
 
-            string featuresColumnName = "Features";
+            var sales = context.Data.CreateEnumerable<Model.AppliantDataCluster>(dataView, reuseRowObject: false);
+
+            string outputParam = "y";
+            string[] inputParams = { "age", "education", "housing", "loan", "duration", "empratevar", "consconfid", "y" };
+
             var pipeline = context.Transforms
-                .Concatenate(featuresColumnName, "age", "job", "education", "default" , "housing", "loan", "duration")
-                .Append(context.Clustering.Trainers.KMeans(featuresColumnName, numberOfClusters: 3));
+                .Concatenate(outputParam, inputParams)
+                .Append(context.Clustering.Trainers.KMeans("y", null, 2 ) );
 
             var model = pipeline.Fit(dataView);
 
@@ -41,7 +45,22 @@ namespace DSS
                 context.Model.Save(model, dataView.Schema, fileStream);
             }
 
-            var predictor = context.Model.CreatePredictionEngine<AppliantDataCluster, ClusterPrediction>(model);
+            var predictor = context.Model.CreatePredictionEngine<Model.AppliantDataCluster, ClusterPrediction>(model);
+
+            ///this is data test....
+            var candidato = new Model.AppliantDataCluster
+            {
+                age = 25,
+                consconfid = -31,
+                education = 1,
+                empratevar = 1,
+                housing = 0,
+                loan = 1,
+                duration = 300
+            };
+
+            var prediction = predictor.Predict(candidato);
+
         }
     }
 }
