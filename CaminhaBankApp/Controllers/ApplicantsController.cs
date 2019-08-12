@@ -1,9 +1,13 @@
-﻿using DAL;
-using Model;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
+using DAL;
+using Model;
 
 namespace CaminhaBankApp.Controllers
 {
@@ -14,8 +18,7 @@ namespace CaminhaBankApp.Controllers
         // GET: Applicants
         public ActionResult Index()
         {
-            var applicants = db.Applicants.Include(a => a.City);
-            return View(applicants.ToList());
+            return View(db.Applicants.ToList());
         }
 
         // GET: Applicants/Details/5
@@ -36,7 +39,6 @@ namespace CaminhaBankApp.Controllers
         // GET: Applicants/Create
         public ActionResult Create()
         {
-            ViewBag.CityId = new SelectList(db.Cities, "Id", "Name");
             return View();
         }
 
@@ -45,7 +47,7 @@ namespace CaminhaBankApp.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,CityId,Cpf,BornDate,Name")] Applicant applicant)
+        public ActionResult Create([Bind(Include = "Id,Education,Age,Housing,Loan,Duration,EmpRateVar,ConsConfId,SearchData,DeservCredit,Cpf,BornDate,Name")] Applicant applicant)
         {
             if (ModelState.IsValid)
             {
@@ -54,7 +56,6 @@ namespace CaminhaBankApp.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CityId = new SelectList(db.Cities, "Id", "Name", applicant.CityId);
             return View(applicant);
         }
 
@@ -70,7 +71,6 @@ namespace CaminhaBankApp.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CityId = new SelectList(db.Cities, "Id", "Name", applicant.CityId);
             return View(applicant);
         }
 
@@ -79,7 +79,7 @@ namespace CaminhaBankApp.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,CityId,Cpf,BornDate,Name")] Applicant applicant)
+        public ActionResult Edit([Bind(Include = "Id,Education,Age,Housing,Loan,Duration,EmpRateVar,ConsConfId,SearchData,DeservCredit,Cpf,BornDate,Name")] Applicant applicant)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,6 @@ namespace CaminhaBankApp.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CityId = new SelectList(db.Cities, "Id", "Name", applicant.CityId);
             return View(applicant);
         }
 

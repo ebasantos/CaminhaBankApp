@@ -1,31 +1,65 @@
 ﻿@using CaminhaBankApp.Models
 @model LoginViewModel
 @{
-    ViewBag.Title = "Efetuar login";
+    ViewBag.Title = "Caminha Bank";
 }
 
+<style>
+    body {
+        /*background-image: url("https://image.freepik.com/foto-gratis/diario-abierto-cafe-teclado-escritorio-fondo-blanco_23-2148061580.jpg");*/
+        /*background-position: center;*/
+        /*background-size: cover;*/
+        color: black; /*text-shadow: 0.5px 0.5px green;*/
+    }
+
+    a {
+        color: black;
+    }
+
+        a:hover {
+            font-weight: bold;
+            color: red;
+        }
+
+    .navbar a {
+        color: white;
+    }
+
+    img {
+        max-width: 300px;
+    }
+    *, *::before, *::after {
+        box-sizing: content-box;
+    }
+
+</style>
 <h2>@ViewBag.Title.</h2>
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-10">
         <section id="loginForm">
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
-                <h4>Usar uma conta local para efetuar login.</h4>
+                <h4>Venha ser Caminha Bank você também!.</h4>
                 <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                <div class="col-md-12">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <img src="https://cdn.pixabay.com/photo/2015/12/06/21/41/credit-card-1080074_960_720.jpg" class="rounded float-right pull-right" alt="Alternate Text" />
                     </div>
                 </div>
                 <div class="form-group">
@@ -38,11 +72,11 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Efetuar login" class="btn btn-default" />
+                        <input type="submit" value="Efetuar login" class="btn btn-success" />
                     </div>
                 </div>
                 <p>
-                    @Html.ActionLink("Registrar-se como novo usuário", "Register")
+                    @Html.ActionLink("Registrar-se como novo usuário", "success")
                 </p>
                 //Ativar isso assim que você tiver a confirmação de conta ativada para a funcionalidade de redefinição de senha
                 <p>
@@ -51,11 +85,12 @@
             }
         </section>
     </div>
+
     @*<div class="col-md-4">
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-        </section>
-    </div>*@
+            <section id="socialLoginForm">
+                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+            </section>
+        </div>*@
 </div>
 
 @section Scripts {
