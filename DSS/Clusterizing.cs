@@ -1,26 +1,24 @@
-﻿using DSS.datas;
-using Microsoft.ML;
+﻿using Microsoft.ML;
 using Model;
-using System.Data;
 using System.IO;
-using Utilities;
 
 namespace DSS
 {
     public class Clusterizing
     {
-        public DataTable GetData()
-        {
-            ///temporaly path, the next step is upload this file to any other only repo...
-            const string path = "D:/Users/Documentos/Desktop/bank-additional/bank-additional-full.csv";
-            GetClusterizing(path);
-            return Commons.ConvertCSVtoDataTable(path);
-        }
+        //public DataTable GetData()
+        //{
+        //    ///temporaly path, the next step is upload this file to any other only repo...
+        //    const string fileBase = "./bank-analiser.csv";
+        //    const string fileLearning = "./bank-analiser-learning.csv";
+        //    GetClusterizing(fileBase, fileLearning);
+        //    //return Commons.ConvertCSVtoDataTable(path);
+        //}
 
-        public void GetClusterizing(string pathFile)
+        public void GetClusterizing(string pathFile, string pathFileLearning)
         {
-            string _dataPath = "D:/Users/Documentos/Desktop/bank-additional/bank-analiser.csv";///?? Path.Combine(Environment.CurrentDirectory, "bank-additional-full.csv");
-            string _modelPath = "D:/Users/Documentos/Desktop/bank-additional/bank-analiser-learning.csv";///?? Path.Combine(Environment.CurrentDirectory, "bank-additional-full.csv");
+            string _dataPath = pathFile;//Path.Combine(Environment.CurrentDirectory, pathFile);
+            string _modelPath = pathFileLearning;//Path.Combine(Environment.CurrentDirectory, pathFileLearning);
 
 
             var context = new MLContext(seed: 0);

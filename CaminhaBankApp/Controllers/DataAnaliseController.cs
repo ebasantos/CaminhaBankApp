@@ -8,8 +8,10 @@ namespace CaminhaBankApp.Controllers
         // GET: DataAnalise
         public void Index()
         {
+            const string fileBase = "bank-analiser.csv";
+            const string fileLearning = "bank-analiser-learning.csv";
             var dataAnaliser = new Clusterizing();
-            dataAnaliser.GetClusterizing("D:/Users/Documentos/Desktop/bank-additional/bank-additional-full.csv");
+            dataAnaliser.GetClusterizing(fileBase, fileLearning);
         }
     }
 }
