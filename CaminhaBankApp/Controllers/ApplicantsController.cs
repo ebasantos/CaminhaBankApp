@@ -20,101 +20,43 @@ namespace CaminhaBankApp.Controllers
         {
             return View(db.Applicants.ToList());
         }
-
-        // GET: Applicants/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Applicant applicant = db.Applicants.Find(id);
-            if (applicant == null)
-            {
-                return HttpNotFound();
-            }
-            return View(applicant);
-        }
-
-        // GET: Applicants/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Applicants/Create
-        // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
-        // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Education,Age,Housing,Loan,Duration,EmpRateVar,ConsConfId,SearchData,DeservCredit,Cpf,BornDate,Name")] Applicant applicant)
         {
+            const string fileBase = "D:/Users/Documentos/Desktop/bank-additional/bank-analiser.csv";
+            const string fileLearning = "D:/Users/Documentos/Desktop/bank-additional/bank-analiser-learning.csv";
+
             if (ModelState.IsValid)
             {
-                db.Applicants.Add(applicant);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                var applcant = new ApplicantDataCluster
+                {
+                    age = applicant.Age,
+                    consconfid = applicant.ConsConfId,
+                    duration = applicant.Duration,
+                    education = applicant.Education,
+                    empratevar = applicant.EmpRateVar,
+                    housing = applicant.Housing,
+                    loan = applicant.Loan
+                };
 
-            return View(applicant);
+                var sad = new DSS.Clusterizing().GetClusterizing(fileBase, fileLearning, applcant);
+
+                if (sad.PredictedClusterId == 1)
+                    return RedirectToAction("index", "AnaliseResult", new { approve = true });
+                else
+                    return RedirectToAction("index", "AnaliseResult", new { approve = false });
+            }
+            else
+                return RedirectToAction("index", "AnaliseResult",new { approve =  false });
         }
 
-        // GET: Applicants/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Applicant applicant = db.Applicants.Find(id);
-            if (applicant == null)
-            {
-                return HttpNotFound();
-            }
-            return View(applicant);
-        }
-
-        // POST: Applicants/Edit/5
-        // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
-        // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Education,Age,Housing,Loan,Duration,EmpRateVar,ConsConfId,SearchData,DeservCredit,Cpf,BornDate,Name")] Applicant applicant)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(applicant).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(applicant);
-        }
-
-        // GET: Applicants/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Applicant applicant = db.Applicants.Find(id);
-            if (applicant == null)
-            {
-                return HttpNotFound();
-            }
-            return View(applicant);
-        }
-
-        // POST: Applicants/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Applicant applicant = db.Applicants.Find(id);
-            db.Applicants.Remove(applicant);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+      
 
         protected override void Dispose(bool disposing)
         {

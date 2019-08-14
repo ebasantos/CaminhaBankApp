@@ -164,6 +164,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AnaliseResultController.cs" />
     <Compile Include="Controllers\ApplicantsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -178,6 +179,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\cards.jpg" />
+    <Content Include="App_Data\loose.jpg" />
+    <Content Include="App_Data\winner.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -206,6 +211,7 @@
     <Content Include="Content\css\modules\animations-extended.min.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\style.min.css" />
+    <Content Include="Content\css\winner.css" />
     <Content Include="Content\form\form.css" />
     <Content Include="Content\form\forms.js" />
     <Content Include="Content\home.css" />
@@ -301,6 +307,8 @@
     <Content Include="Views\Applicants\Details.cshtml" />
     <Content Include="Views\Applicants\Edit.cshtml" />
     <Content Include="Views\Applicants\Index.cshtml" />
+    <Content Include="Views\AnaliseResult\winner.cshtml" />
+    <Content Include="Views\AnaliseResult\bad.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\DataAnalise\" />

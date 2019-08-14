@@ -17,7 +17,7 @@ namespace Model
         public int Duration { get; set; }
         [DisplayName("Tempo de serviço em carteira")]
         public int EmpRateVar { get; set; }
-        [DisplayName("Score")]
+        [DisplayName("Score de 0 a 1500")]
         public int ConsConfId { get; set; }
         public DateTime SearchData { get; set; }
         public bool DeservCredit { get; set; }
