@@ -20,8 +20,13 @@
                     <div class="col-md-12">
                         @Html.LabelFor(model => model.Education, htmlAttributes: new { @class = "control-label col-md-12" })
                     </div>
-                    <div class="col-md-12">
-                        @Html.EditorFor(model => model.Education, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="col-md-12" name="Education">
+                        <select class="mdb-select md-form" name="Education">
+                            <option value="1">Base</option>
+                            <option value="2">Medio</option>
+                            <option value="3">Tecnico</option>
+                            <option value="4">Superior</option>
+                        </select>
                         @Html.ValidationMessageFor(model => model.Education, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -37,7 +42,10 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Housing, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Housing, new { htmlAttributes = new { @class = "form-control" } })
+                        <select class="mdb-select md-form" name="Housing">
+                            <option value="1">Sim</option>
+                            <option value="0">Não</option>
+                        </select>
                         @Html.ValidationMessageFor(model => model.Housing, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -45,7 +53,10 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Loan, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Loan, new { htmlAttributes = new { @class = "form-control" } })
+                        <select class="mdb-select md-form" name="Loan">
+                            <option value="1">Sim</option>
+                            <option value="0">Não</option>
+                        </select>
                         @Html.ValidationMessageFor(model => model.Loan, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -81,14 +92,6 @@
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.Cpf, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Cpf, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.BornDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.BornDate, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.BornDate, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
