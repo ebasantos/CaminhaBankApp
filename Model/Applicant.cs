@@ -5,19 +5,19 @@ namespace Model
 {
     public class Applicant : People
     {
-        [DisplayName("Ensino")]
+        [DisplayName("Grau de escolaridade")]
         public int Education { get; set; }
         [DisplayName("Idade")]
         public int Age { get; set; }
-        [DisplayName("Casa própria")]
+        [DisplayName("Tem casa própria")]
         public int Housing { get; set; }
-        [DisplayName("Emprestimo Consignado")]
+        [DisplayName("Ja teve emprestimo consignado em seu nome?")]
         public int Loan { get; set; }
-        [DisplayName("Relacionamento com bancos")]
+        [DisplayName("Qual nota você daria para os problemas que já teve com banco, sendo 0 nenhum e 10 muito ruins?")]
         public int Duration { get; set; }
         [DisplayName("Tempo de serviço em carteira")]
         public int EmpRateVar { get; set; }
-        [DisplayName("Score de 0 a 1500")]
+        [DisplayName("Score Serasa")]
         public int ConsConfId { get; set; }
         public DateTime SearchData { get; set; }
         public bool DeservCredit { get; set; }

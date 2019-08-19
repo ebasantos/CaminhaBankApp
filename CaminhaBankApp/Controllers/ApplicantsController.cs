@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using DAL;
+﻿using DAL;
+using DSS;
 using Model;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace CaminhaBankApp.Controllers
 {
     public class ApplicantsController : Controller
     {
         private CaminhaBankContext db = new CaminhaBankContext();
+        public float[] noResult = { 0, 0 };
 
         // GET: Applicants
         public ActionResult Index()
@@ -37,34 +33,23 @@ namespace CaminhaBankApp.Controllers
                 var applcant = new ApplicantDataCluster
                 {
                     age = applicant.Age,
-                    consconfid = applicant.ConsConfId,
-                    duration = applicant.Duration,
+                    consconfid = -(applicant.ConsConfId / 10),
+                    duration = applicant.Duration*10,
                     education = applicant.Education,
                     empratevar = applicant.EmpRateVar,
                     housing = applicant.Housing,
                     loan = applicant.Loan
                 };
 
-                var sad = new DSS.Clusterizing().GetClusterizing(fileBase, fileLearning, applcant);
-
-                if (sad.PredictedClusterId == 1)
-                    return RedirectToAction("index", "AnaliseResult", new { approve = true });
-                else
-                    return RedirectToAction("index", "AnaliseResult", new { approve = false });
+                var analiseResult = new Clusterizing().GetClusterizing(fileBase, fileLearning, applcant);
+                
+                return RedirectToAction("Index", "AnaliseResult", new { group1 = analiseResult.Distances[0],
+                                                                        group2 = analiseResult.Distances[1],
+                                                                        resultGroup = analiseResult.PredictedClusterId });
             }
             else
-                return RedirectToAction("index", "AnaliseResult",new { approve =  false });
+                return RedirectToAction("index", "AnaliseResult", new { group1 = 0, group2 = 0 , resultGroup  = 1} );
         }
 
-      
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }

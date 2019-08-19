@@ -1,13 +1,22 @@
 ﻿<link href="~/Content/form/form.css" rel="stylesheet" />
 <link href="~/Content/css/winner.css" rel="stylesheet" />
-<div class="align-content-center form">
-    <label>Parabéns, você é o mais novo cliente Caminha Bank!</label>
-</div>
 <div class="form">
+    <div class="form text-monospace" style="background-color: green; color: white; font-weight: bold;">
+        <label class="h5 col-md-11">Parabéns, você é o mais novo cliente Caminha Bank!</label>
+    </div>
     <div class="row">
-        <div class="row col-md-12">
-
-            <img class="rounded mx-auto d-block img-thumbnail" src="https://cdn.pixabay.com/photo/2015/01/08/18/24/children-593313_960_720.jpg" alt="Alternate Text" />
+        <div class="col-md-12">
+            <img class="img-thumbnail" src="https://cdn.pixabay.com/photo/2015/01/08/18/24/children-593313_960_720.jpg" alt="Alternate Text" />
         </div>
     </div>
+    <div class="heard form" style="padding: 30px; background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+        <h5 class="label-table h5">
+            Entenda melhor nossa análise sobre você:
+        </h5>
+        <hr />
+    </div>
+    <div class="row">
+        @{Html.RenderPartial("_PartialChart");}
+    </div>
+
 </div>

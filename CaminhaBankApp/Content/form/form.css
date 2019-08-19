@@ -2,12 +2,16 @@
     box-sizing: border-box;
 }
 
+
+
 html {
     overflow-y: scroll;
 }
 
 body {
     font-family: 'Titillium Web', sans-serif;
+    /*background-color: #20aaf3;*/ 
+    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 a {
@@ -16,8 +20,8 @@ a {
 }
 
 .form {
-    color: azure;
-    background-color: #4a8df7;
+    color: black;
+    background-color: white;
     padding: 40px;
     max-width: 800px;
     margin: 40px auto;

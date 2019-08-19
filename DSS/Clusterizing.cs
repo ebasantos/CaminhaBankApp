@@ -17,9 +17,6 @@ namespace DSS
             IDataView dataView = context.Data.LoadFromTextFile<Model.ApplicantDataCluster>(_dataPath, separatorChar: ',', hasHeader: true, allowQuoting: true,
                                                                                     trimWhitespace: true, allowSparse: true);
 
-
-            var sales = context.Data.CreateEnumerable<Model.ApplicantDataCluster>(dataView, reuseRowObject: false);
-
             string outputParam = "y";
             string[] inputParams = { "age", "education", "housing", "loan", "duration", "empratevar", "consconfid", "y" };
 

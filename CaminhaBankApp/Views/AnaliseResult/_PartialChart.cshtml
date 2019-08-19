@@ -1,0 +1,42 @@
+﻿<style>
+    .chart {
+        background-color: white;
+        border: solid 1px gray;
+        border-radius: 5px;
+        color: black;
+    }
+</style>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<div class="chart col-md-12">
+    <div class="row">
+        <canvas id="myChart" width="400" height="200"></canvas>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script>
+    let aprovado = parseInt(@ViewBag.Cluster1)
+    let reprovado = parseInt(@ViewBag.Cluster2)
+            var ctx = document.getElementById('myChart');
+            var myChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Aprovado', 'Reprovado'],
+                    datasets: [{
+                        label: '# avaliação',
+                        data: [aprovado, reprovado],
+                        backgroundColor: [
+                            'green',
+                            'red',
+                        ]
+                        ,
+                        borderColor: [
+                            'green',
+                            'red',
+                        ],
+                        borderWidth: 1
+                    }]
+                }
+            });
+</script>

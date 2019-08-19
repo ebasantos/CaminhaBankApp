@@ -3,6 +3,34 @@
     ViewBag.Title = "Registre-se";
 }
 
+<style>
+    body {
+        color: white;
+        background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        font-weight: bold;
+    }
+
+    a {
+        color: white;
+    }
+
+        a:hover {
+            font-weight: bold;
+            color: springgreen;
+        }
+
+    .navbar a {
+        color: white;
+    }
+
+    img {
+        max-width: 300px;
+    }
+
+    *, *::before, *::after {
+        box-sizing: content-box;
+    }
+</style>
 <h2>@ViewBag.Title.</h2>
 
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
@@ -31,7 +59,7 @@
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Registrar-se" />
+            <input type="submit" class="btn btn-success" value="Registrar-se" />
         </div>
     </div>
 }

@@ -1,22 +1,22 @@
 ﻿<link href="~/Content/form/form.css" rel="stylesheet" />
-<style>
-    .form {
-        color: azure;
-        background-color: #4a8df7;
-        padding: 40px;
-        max-width: 800px;
-        margin: 8px auto;
-        border-radius: 4px;
-        box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
-    }
-</style>
-<div class="align-content-center form">
-    <label>Não fique triste, tente novamente!</label>
-</div>
+<link href="~/Content/form/form.css" rel="stylesheet" />
+<link href="~/Content/css/winner.css" rel="stylesheet" />
 <div class="form">
+    <div class="form text-monospace" style="background-color: darkred; color: white; font-weight: bold;">
+        <label class="h5 col-md-11">Não fique triste, tente novamente!</label>
+    </div>
     <div class="row">
         <div class="row col-md-12">
             <img class="rounded mx-auto d-block img-thumbnail" src="https://img.freepik.com/free-photo/angry-expression_102671-103.jpg?size=626&ext=jpg" alt="Alternate Text" />
         </div>
+    </div>
+    <div class="heard form" style="padding: 30px; background-color: #20aaf3;">
+        <h5 class="label-table h5">
+            Entenda melhor nossa análise sobre você:
+        </h5>
+        <hr />
+    </div>
+    <div style="padding: 10px" class="row">
+        @{Html.RenderPartial("_PartialChart");}
     </div>
 </div>
