@@ -2,10 +2,10 @@
 ![Open Source Love](https://img.shields.io/static/v1.svg?style=flat-square&logo=git&label=CaminhaBank&message=Studing-Repo&color=F05032&labelColor=000)
 
 ## Descriptionin 
-`This repo are my 'hello world' in ML.net.
-There are use the classification algorithm to `
+`This repo are my 'hello world' in ML.net. Here, i using ASP.net MVC, Razor, JQuery Chart.js`
 
-`decide if give a fiction credit card for a new customer.`
+`There are use the classification algorithm to 
+decide if give a fiction credit card for a new customer.`
 
 ## Contribute
 
