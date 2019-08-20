@@ -18,7 +18,7 @@ namespace DSS
                                                                                     trimWhitespace: true, allowSparse: true);
 
             string outputParam = "y";
-            string[] inputParams = { "age", "education", "housing", "loan", "duration", "empratevar", "consconfid", "y" };
+            string[] inputParams = { "age", "education", "housing", "loan", "duration", "empratevar", "consconfid"  };
 
             var pipeline = context.Transforms
                 .Concatenate(outputParam, inputParams)
@@ -36,7 +36,9 @@ namespace DSS
 
             
 
-            return predictor.Predict(applicant);
+            var result =  predictor.Predict(applicant);
+
+            return result;
 
         }
     }

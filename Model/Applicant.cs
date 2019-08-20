@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model
 {
@@ -21,5 +22,7 @@ namespace Model
         public int ConsConfId { get; set; }
         public DateTime SearchData { get; set; }
         public bool DeservCredit { get; set; }
+        [NotMapped]
+        public int y { get; set; }
     }
 }

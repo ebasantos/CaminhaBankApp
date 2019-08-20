@@ -5,13 +5,22 @@
         border-radius: 5px;
         color: black;
     }
+
+    #linebar {
+        padding: 15px;
+    }
 </style>
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<div class="chart col-md-12">
+<div class="chart col-md-12" style="padding: 10px;">
     <div class="row">
         <canvas id="myChart" width="400" height="200"></canvas>
+    </div>
+</div>
+<div class="chart col-md-12" style="padding: 15px;">
+    <div class="row">
+        <canvas id="line-chart" width="400" height="150"></canvas>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
@@ -38,5 +47,33 @@
                         borderWidth: 1
                     }]
                 }
-            });
+    });
+
+    $.ajax({
+        url: '/AnaliseResult/getapproved',
+        method: 'get',
+        async: true,
+        dataType: 'json',
+        success: function (result) {
+            let list = new Array();
+            for (var i = 0; i < result.length - 1; i++) {
+                if (result[i].age)
+                    list.push(parseInt(result[i].age))
+            }
+            console.log(list)
+            new Chart(document.getElementById("line-chart"), {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        data: list,
+                        label: "Faixa etária de nossos clientes",
+                        borderColor: "#3e95cd",
+                        fill: false
+                    }
+                    ]
+                }
+            })
+        }
+
+    })
 </script>

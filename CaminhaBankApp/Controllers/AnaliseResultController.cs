@@ -1,6 +1,9 @@
-﻿using Model;
+﻿using CaminhaBankApp.Models;
+using Model;
 using System;
+using System.Linq;
 using System.Web.Mvc;
+using Utilities;
 
 namespace CaminhaBankApp.Controllers
 {
@@ -17,6 +20,14 @@ namespace CaminhaBankApp.Controllers
                 return View("winner");
             else
                 return View("bad");
+        }
+
+        public JsonResult GetApproved()
+        {
+            var dt = Commons.ConvertCSVtoDataTable("D:/Users/Documentos/Desktop/bank-additional/bank-analiser.csv");
+            var list = Commons.ConvertDataTable<ApplicantReader>(dt);
+
+            return Json(list.Where( x=> x.y == "1"), JsonRequestBehavior.AllowGet);
         }
     }
 }

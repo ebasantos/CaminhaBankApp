@@ -124,6 +124,7 @@
   <ItemGroup>
     <Compile Include="ApplicantDataCluster.cs" />
     <Compile Include="Applicant.cs" />
+    <Compile Include="ApplicantReader.cs" />
     <Compile Include="City.cs" />
     <Compile Include="ClusterPrediction.cs" />
     <Compile Include="Entity.cs" />

@@ -33,8 +33,8 @@ namespace CaminhaBankApp.Controllers
                 var applcant = new ApplicantDataCluster
                 {
                     age = applicant.Age,
-                    consconfid = -(applicant.ConsConfId / 10),
-                    duration = applicant.Duration*10,
+                    consconfid = -(applicant.ConsConfId+400 / 10),
+                    duration = (applicant.Duration*10)+500,
                     education = applicant.Education,
                     empratevar = applicant.EmpRateVar,
                     housing = applicant.Housing,
