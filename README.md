@@ -1,7 +1,7 @@
 # Caminhabank [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 ![Open Source Love](https://img.shields.io/static/v1.svg?style=flat-square&logo=git&label=CaminhaBank&message=Studing-Repo&color=F05032&labelColor=000)
 
-## Descriptionin 
+## Description
 `This repo are my 'hello world' in ML.net. Here, i using ASP.net MVC, Razor, JQuery Chart.js`
 
 `There are use the classification algorithm to 
