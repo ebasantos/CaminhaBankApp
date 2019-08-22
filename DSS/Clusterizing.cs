@@ -9,8 +9,8 @@ namespace DSS
     {
         public ClusterPrediction GetClusterizing(string pathFile, string pathFileLearning, ApplicantDataCluster applicant)
         {
-            string _dataPath =  pathFile;// Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), pathFile);//Path.Combine(Environment.CurrentDirectory, pathFile);
-            string _modelPath = pathFileLearning;// Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), pathFileLearning);//Path.Combine(Environment.CurrentDirectory, pathFileLearning);
+            string _dataPath =  pathFile;
+            string _modelPath = pathFileLearning;
 
 
             var context = new MLContext(seed: 0);
@@ -32,9 +32,7 @@ namespace DSS
                 context.Model.Save(model, dataView.Schema, fileStream);
             }
 
-            var predictor = context.Model.CreatePredictionEngine<Model.ApplicantDataCluster, ClusterPrediction>(model);
-
-            
+            var predictor = context.Model.CreatePredictionEngine<Model.ApplicantDataCluster, ClusterPrediction>(model);            
 
             var result =  predictor.Predict(applicant);
 

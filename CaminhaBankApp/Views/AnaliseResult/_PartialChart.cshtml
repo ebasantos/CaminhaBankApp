@@ -23,10 +23,11 @@
         <canvas id="line-chart" width="400" height="150"></canvas>
     </div>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <script>
-    let aprovado = parseInt(@ViewBag.Cluster1)
-    let reprovado = parseInt(@ViewBag.Cluster2)
+    let reprovado = parseInt(@ViewBag.Cluster1)
+    let aprovado = parseInt(@ViewBag.Cluster2)
             var ctx = document.getElementById('myChart');
             var myChart = new Chart(ctx, {
                 type: 'doughnut',
@@ -60,7 +61,6 @@
                 if (result[i].age)
                     list.push(parseInt(result[i].age))
             }
-            console.log(list)
             new Chart(document.getElementById("line-chart"), {
                 type: 'line',
                 data: {
@@ -69,10 +69,10 @@
                         label: "Faixa etária de nossos clientes",
                         borderColor: "#3e95cd",
                         fill: false
-                    }
-                    ]
+                    }]
                 }
             })
+
         }
 
     })

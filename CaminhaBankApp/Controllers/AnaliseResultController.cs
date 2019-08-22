@@ -16,7 +16,7 @@ namespace CaminhaBankApp.Controllers
             ViewBag.Cluster1 = Convert.ToInt32(group1);
             ViewBag.Cluster2 = Convert.ToInt32(group2);
 
-            if (resultGroup == 2)
+            if (group1 < group2)
                 return View("winner");
             else
                 return View("bad");
